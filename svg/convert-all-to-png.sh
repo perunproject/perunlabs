@@ -1,16 +1,22 @@
 #!/bin/bash
 
 SVG_DIR=`dirname ${0}`
-IMG_DIR="${SVG_DIR}"/../img
+
+function convert_file {
+  INPUT="$1".svg
+  OUTPUT="${SVG_DIR}"/../img/"$1".png
+  WIDTH="$2"
+  HEIGHT="$3"
+
+  if [ "${INPUT}" -nt "${OUTPUT}" ]; then
+    inkscape --export-width="${WIDTH}" --export-height="${HEIGHT}" --export-png="${OUTPUT}" "${INPUT}"
+    png-squeeze-full "${OUTPUT}"
+  fi
+}
 
 cd "${SVG_DIR}"
 
-inkscape --export-width=256 --export-height=64 --export-png="${IMG_DIR}"/games.png games.svg 
-png-squeeze-full "${IMG_DIR}"/games.png
-
-inkscape --export-width=500 --export-height=250 --export-png="${IMG_DIR}"/sokoban.png sokoban.svg
-png-squeeze-full "${IMG_DIR}"/sokoban.png
-
-inkscape --export-width=500 --export-height=250 --export-png="${IMG_DIR}"/supaplex.png supaplex.svg
-png-squeeze-full "${IMG_DIR}"/supaplex.png
+convert_file games 256 64
+convert_file sokoban 500 250
+convert_file supaplex 500 250
 
