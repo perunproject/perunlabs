@@ -11,3 +11,6 @@ png-squeeze-full "${IMG_DIR}"/games.png
 inkscape --export-width=500 --export-height=250 --export-png="${IMG_DIR}"/sokoban.png sokoban.svg
 png-squeeze-full "${IMG_DIR}"/sokoban.png
 
+inkscape --export-width=500 --export-height=250 --export-png="${IMG_DIR}"/supaplex.png supaplex.svg
+png-squeeze-full "${IMG_DIR}"/supaplex.png
+
