@@ -19,4 +19,5 @@ cd "${SVG_DIR}"
 convert_file games 256 64
 convert_file sokoban 500 250
 convert_file supaplex 500 250
+convert_file tile 32 32
 
